@@ -1,0 +1,42 @@
+<article>
+  <app-page-head path="resume.pdf">
+    <ng-container i18n="@@resume.comment">1 page · updated [date]</ng-container>
+  </app-page-head>
+  <h1 class="t-title mt5" i18n="@@resume.title">Resume</h1>
+  <div
+    class="ph page mt6"
+    role="img"
+    aria-label="[Resume preview placeholder]"
+    i18n-aria-label="@@resume.preview.label"
+  >
+    <span aria-hidden="true" i18n="@@resume.preview.text">[Resume preview]</span>
+  </div>
+</article>
+
+<aside>
+  <a class="btn" href="/resume.pdf" download i18n="@@resume.download">Download PDF</a>
+  <a
+    class="lk mt1"
+    href="/resume.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    i18n="@@resume.newtab"
+    >Open in a new tab →</a
+  >
+  <section class="card mt4" aria-label="Details" i18n-aria-label="@@resume.details.label">
+    <p class="t-label" i18n="@@resume.details.heading">details</p>
+    <div class="row"><span class="c-mute" i18n="@@resume.pages">Pages</span><span>1</span></div>
+    <div class="row">
+      <span class="c-mute" i18n="@@resume.updated">Updated</span
+      ><span i18n="@@resume.updated.value">[date]</span>
+    </div>
+    <div class="row">
+      <span class="c-mute" i18n="@@resume.size">Size</span
+      ><span i18n="@@resume.size.value">[size] KB</span>
+    </div>
+    <div class="row">
+      <span class="c-mute" i18n="@@resume.language">Language</span
+      ><span i18n="@@resume.language.value">English</span>
+    </div>
+  </section>
+</aside>

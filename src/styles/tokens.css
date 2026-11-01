@@ -1,0 +1,147 @@
+/*
+  Design tokens for nikaqil.com.
+  Source of truth: the "Portfolio screens" canvas (https://claude.ai/artifact/H4NyHhtT19TVbezuCWshTa).
+  One font, one spacing scale, light and dark. Components use these variables and no literal values.
+  Keep this file identical to .claude/skills/frontend-design/tokens.css.
+*/
+
+:root {
+  color-scheme: light dark;
+
+  --font:
+    'JetBrains Mono', 'JetBrains Mono Fallback', ui-monospace, SFMono-Regular, Menlo, Consolas,
+    monospace;
+
+  /* spacing scale */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --s7: 48px;
+  --s8: 64px;
+
+  /* layout */
+  --bar-h: 48px; /* tab bar and status bar */
+  --side-w: 288px; /* file tree */
+  --aside-w: 360px; /* side panel next to a case study, about, contact, resume */
+  --label-w: 128px; /* date column in a timeline row */
+  --index-w: 32px; /* number column in the decisions list */
+  --finder-w: 560px; /* search dialog */
+  --measure: 75ch; /* longest line of running text */
+  --content-w: 1056px; /* widest page content */
+  --px: 48px; /* page padding, sides */
+  --py: 32px; /* page padding, top and bottom */
+  --r: 8px; /* cards, buttons, inputs */
+  --r-s: 4px; /* small controls */
+  --tap: 44px; /* minimum touch target */
+  --file-h: 40px; /* file tree row */
+  --row-h: 48px; /* list row, button, input */
+  --area-h: 144px; /* message box */
+
+  /* lines and accents */
+  --stroke: 1px;
+  --stroke-bold: 1.5px;
+  --mark-tab: 2px; /* accent bar on the active tab */
+  --mark-file: 3px; /* accent bar on the active file */
+  --ring: 3px; /* focus ring width and offset */
+
+  /* type: size and line height */
+  --display-size: 44px;
+  --display-line: 56px; /* weight 500, letter-spacing -0.04em */
+  --title-size: 64px;
+  --title-line: 64px; /* weight 700, letter-spacing -0.05em */
+  --card-size: 24px;
+  --card-line: 32px; /* weight 700, letter-spacing -0.03em */
+  --lead-size: 24px;
+  --lead-line: 36px; /* weight 400, letter-spacing -0.02em */
+  --h2-size: 16px;
+  --h2-line: 24px; /* weight 700, amber "## " prefix */
+  --body-size: 15px;
+  --body-line: 24px; /* weight 400 */
+  --ui-size: 14px;
+  --ui-line: 20px; /* weight 500 */
+  --meta-size: 13px;
+  --meta-line: 20px; /* weight 400 */
+  --label-size: 12px;
+  --label-line: 16px; /* weight 500, uppercase, letter-spacing 0.08em */
+  --ls-display: -0.04em;
+  --ls-title: -0.05em;
+  --ls-card: -0.03em;
+  --ls-lead: -0.02em;
+  --ls-label: 0.08em;
+  --link-w: 3px; /* underline on the display sentence */
+  --link-off: 8px;
+  --link-w-s: 2px; /* underline on lead text and on phone */
+  --link-off-s: 6px;
+
+  /* motion: one easing and one duration; GSAP reads these */
+  --dur: 240ms;
+  --blink: 1100ms; /* cursor blink */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --shift: var(--s2); /* distance content travels when it enters */
+
+  /* colour: light */
+  --bg: #fafaf7;
+  --panel: #f0f0eb;
+  --bar: #e6e6e0;
+  --text: #1f2430;
+  --mute: #5c6573;
+  --acc: #0b7a43;
+  --amb: #8a5a00;
+  --line: #d9d9d2;
+  --sel: #e4e7ee;
+  --onacc: #fafaf7;
+  --focus: #1d4ed8;
+}
+
+/* Compact desktop and tablet: below 1280px side panels and card grids stack */
+/* Phone: below 768px */
+@media (max-width: 767px) {
+  :root {
+    --px: 16px;
+    --py: 24px;
+    --file-h: 48px;
+    --display-size: 26px;
+    --display-line: 34px;
+    --title-size: 36px;
+    --title-line: 40px;
+    --lead-size: 18px;
+    --lead-line: 28px;
+    --link-w: 2px;
+    --link-off: 6px;
+  }
+}
+
+/* Dark: follows the system unless the visitor chose light */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #11151c;
+    --panel: #171c26;
+    --bar: #0c0f14;
+    --text: #d6dce5;
+    --mute: #8b96a8;
+    --acc: #5fd38d;
+    --amb: #e6b450;
+    --line: #262d3a;
+    --sel: #1f2735;
+    --onacc: #0c0f14;
+    --focus: #7fb2ff;
+  }
+}
+
+/* Dark: chosen by the visitor */
+:root[data-theme='dark'] {
+  --bg: #11151c;
+  --panel: #171c26;
+  --bar: #0c0f14;
+  --text: #d6dce5;
+  --mute: #8b96a8;
+  --acc: #5fd38d;
+  --amb: #e6b450;
+  --line: #262d3a;
+  --sel: #1f2735;
+  --onacc: #0c0f14;
+  --focus: #7fb2ff;
+}

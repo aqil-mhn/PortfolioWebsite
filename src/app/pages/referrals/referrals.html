@@ -1,0 +1,28 @@
+<app-page-head path="referrals.md">
+  <ng-container i18n="@@referrals.comment">Shared with permission</ng-container>
+</app-page-head>
+<h1 class="t-title mt5" i18n="@@referrals.title">Referrals</h1>
+<p class="t-lead mt4" i18n="@@referrals.lead">What people I have worked with say about the work.</p>
+
+<div class="cols2 mt6">
+  @for (n of placeholders; track n) {
+    <article class="card">
+      <p class="t-label" i18n="@@referrals.card.who">[Name], [Role]</p>
+      <p class="t-body" i18n="@@referrals.card.quote">
+        “[Quote from a referral, used with permission. Two or three sentences about the work.]”
+      </p>
+      <div class="push"></div>
+      <p class="t-meta mt3" i18n="@@referrals.card.where">[Organisation] · [Year]</p>
+    </article>
+  }
+  <section
+    class="card"
+    aria-label="References available on request"
+    i18n-aria-label="@@referrals.request.label"
+  >
+    <p class="t-label" i18n="@@referrals.request.heading">on request</p>
+    <h2 class="t-card" i18n="@@referrals.request.title">References available on request</h2>
+    <div class="push"></div>
+    <a class="lk" routerLink="/contact" i18n="@@referrals.request.link">Ask by email →</a>
+  </section>
+</div>

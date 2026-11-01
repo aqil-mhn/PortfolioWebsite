@@ -1,0 +1,40 @@
+<footer class="sb">
+  @if (page(); as current) {
+    <span class="sb-info">{{ current.section }} · {{ current.file }} · {{ current.status }}</span>
+  }
+  <span class="sb-info" i18n="@@frame.openfrom">Open from [date]</span>
+  <div class="sbr">
+    <div class="langs" role="group" aria-label="Language" i18n-aria-label="@@frame.language">
+      @for (language of languages(); track language.code) {
+        <a
+          class="lg"
+          [attr.href]="language.href"
+          [attr.lang]="language.tag"
+          [attr.hreflang]="language.tag"
+          [attr.aria-current]="language.current ? 'true' : null"
+          >{{ language.short }}<span class="visually-hidden"> {{ language.name }}</span></a
+        >
+      }
+    </div>
+    <div class="tg" role="group" aria-label="Appearance" i18n-aria-label="@@frame.appearance">
+      <button
+        type="button"
+        class="bl"
+        [attr.aria-pressed]="theme.theme() === 'light'"
+        (click)="theme.set('light')"
+        i18n="@@frame.theme.light"
+      >
+        Light
+      </button>
+      <button
+        type="button"
+        class="bd"
+        [attr.aria-pressed]="theme.theme() === 'dark'"
+        (click)="theme.set('dark')"
+        i18n="@@frame.theme.dark"
+      >
+        Dark
+      </button>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,34 @@
+<dialog #dialog class="finder" aria-labelledby="finder-title" (close)="shell.finderOpen.set(false)">
+  <form (submit)="openFirst($event)" (keydown)="onKey($event)">
+    <h2 id="finder-title" class="visually-hidden" i18n="@@finder.title">Search files</h2>
+    <div class="finder-bar">
+      <label class="visually-hidden" for="finder-query" i18n="@@finder.label"
+        >Type a file name</label
+      >
+      <input
+        id="finder-query"
+        class="input"
+        type="search"
+        autocomplete="off"
+        placeholder="home.md"
+        [value]="query()"
+        (input)="onInput($event)"
+      />
+      <button type="button" class="mbtn" (click)="shell.finderOpen.set(false)">
+        <ng-container i18n="@@frame.menu.close">Close</ng-container>
+      </button>
+    </div>
+    <ul>
+      @for (file of results(); track file.path) {
+        <li>
+          <a class="row" [routerLink]="file.path" (click)="shell.finderOpen.set(false)">
+            <span>{{ file.name }}</span>
+            <span class="t-meta">{{ file.hint }}</span>
+          </a>
+        </li>
+      } @empty {
+        <li class="t-meta mt3" i18n="@@finder.empty">No file matches. Try another name.</li>
+      }
+    </ul>
+  </form>
+</dialog>

@@ -1,0 +1,153 @@
+<article>
+  <app-page-head path="contact.md">
+    <ng-container i18n="@@contact.comment">I usually reply within [time]</ng-container>
+  </app-page-head>
+  <h1 class="t-title mt5" i18n="@@contact.title">Contact</h1>
+  <p class="t-lead mt4" i18n="@@contact.lead">Say hello, or tell me about a role.</p>
+
+  <form
+    class="card mt6"
+    [formGroup]="form"
+    (ngSubmit)="submit()"
+    novalidate
+    aria-label="Send a message"
+    i18n-aria-label="@@contact.form.label"
+  >
+    <div class="field">
+      <label for="contact-name" i18n="@@contact.name">Name</label>
+      <input
+        class="input"
+        id="contact-name"
+        type="text"
+        formControlName="name"
+        autocomplete="name"
+        placeholder="[Your name]"
+        i18n-placeholder="@@contact.name.placeholder"
+        [attr.aria-invalid]="showError('name')"
+        [attr.aria-describedby]="showError('name') ? 'contact-name-error' : null"
+      />
+      @if (showError('name')) {
+        <p class="err" id="contact-name-error" i18n="@@contact.name.error">Enter your name.</p>
+      }
+    </div>
+
+    <div class="field mt4">
+      <label for="contact-email" i18n="@@contact.email">Email</label>
+      <input
+        class="input"
+        id="contact-email"
+        type="email"
+        formControlName="email"
+        autocomplete="email"
+        placeholder="[you&#64;example.com]"
+        i18n-placeholder="@@contact.email.placeholder"
+        [attr.aria-invalid]="showError('email')"
+        [attr.aria-describedby]="showError('email') ? 'contact-email-error' : null"
+      />
+      @if (showError('email')) {
+        <p class="err" id="contact-email-error" i18n="@@contact.email.error">
+          Enter an email address I can reply to, like you&#64;example.com.
+        </p>
+      }
+    </div>
+
+    <div class="field mt4">
+      <label for="contact-message" i18n="@@contact.message">Message</label>
+      <textarea
+        class="input"
+        id="contact-message"
+        formControlName="message"
+        placeholder="[What would you like to talk about?]"
+        i18n-placeholder="@@contact.message.placeholder"
+        [attr.aria-invalid]="showError('message')"
+        [attr.aria-describedby]="showError('message') ? 'contact-message-error' : null"
+      ></textarea>
+      @if (showError('message')) {
+        <p class="err" id="contact-message-error" i18n="@@contact.message.error">
+          Write a short message so I know what to reply to.
+        </p>
+      }
+    </div>
+
+    <button type="submit" class="btn mt5" [disabled]="state() === 'sending'">
+      @if (state() === 'sending') {
+        <ng-container i18n="@@contact.sending">Sending…</ng-container>
+      } @else {
+        <ng-container i18n="@@contact.send">Send message</ng-container>
+      }
+    </button>
+
+    <p class="status mt3" role="status">
+      @switch (state()) {
+        @case ('sent') {
+          <span class="c-acc" i18n="@@contact.sent"
+            >Message sent. Thank you, I will reply as soon as I can.</span
+          >
+        }
+        @case ('failed') {
+          <span class="c-amb" i18n="@@contact.failed"
+            >The message was not sent. Try again in a minute, or email me directly.</span
+          >
+        }
+        @default {
+          <span class="c-mute" i18n="@@contact.hint"
+            >Your message goes to [email]&#64;nikaqil.com. No account needed.</span
+          >
+        }
+      }
+    </p>
+  </form>
+</article>
+
+<aside>
+  <section class="card" aria-label="Elsewhere" i18n-aria-label="@@contact.elsewhere.label">
+    <p class="t-label" i18n="@@contact.elsewhere.heading">elsewhere</p>
+    @if (site.email; as address) {
+      <a class="row" [href]="'mailto:' + address"
+        ><span i18n="@@contact.row.email">Email</span><span class="c-acc">{{ address }}</span></a
+      >
+    } @else {
+      <div class="row">
+        <span i18n="@@contact.row.email2">Email</span
+        ><span class="c-mute" i18n="@@contact.row.email.pending">[email]&#64;nikaqil.com</span>
+      </div>
+    }
+    <a class="row" routerLink="/resume"
+      ><span i18n="@@contact.row.resume">Resume, PDF</span
+      ><span class="c-mute" aria-hidden="true">→</span></a
+    >
+    @if (site.github; as url) {
+      <a class="row" [href]="url" target="_blank" rel="noopener noreferrer"
+        ><span
+          >GitHub<span class="visually-hidden" i18n="@@link.newtab">
+            (opens in a new tab)</span
+          ></span
+        ><span class="c-mute" aria-hidden="true">↗</span></a
+      >
+    }
+    @if (site.linkedin; as url) {
+      <a class="row" [href]="url" target="_blank" rel="noopener noreferrer"
+        ><span
+          >LinkedIn<span class="visually-hidden" i18n="@@link.newtab">
+            (opens in a new tab)</span
+          ></span
+        ><span class="c-mute" aria-hidden="true">↗</span></a
+      >
+    } @else {
+      <div class="row">
+        <span>LinkedIn</span
+        ><span class="c-mute" i18n="@@contact.row.linkedin.pending">[profile URL]</span>
+      </div>
+    }
+  </section>
+
+  <section
+    class="card mt4"
+    aria-label="Availability"
+    i18n-aria-label="@@contact.availability.label"
+  >
+    <p class="t-label" i18n="@@contact.availability.heading">availability</p>
+    <p class="t-body" i18n="@@contact.availability.open">Open from [date]</p>
+    <p class="t-meta mt1" i18n="@@contact.availability.based">Based in [City], Malaysia</p>
+  </section>
+</aside>

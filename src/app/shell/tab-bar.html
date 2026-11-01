@@ -1,0 +1,45 @@
+<header class="tabbar">
+  <div class="tabbar-d">
+    <div class="tabs">
+      <a class="tab" routerLink="/" [attr.aria-current]="isHome() ? 'page' : null">home.md</a>
+      @if (!isHome() && page(); as current) {
+        <a class="tab" aria-current="page" [routerLink]="url()">{{ current.file }}</a>
+      }
+    </div>
+    <button type="button" class="search" (click)="shell.finderOpen.set(true)">
+      <span i18n="@@frame.search">Search</span><b>Ctrl K</b>
+    </button>
+  </div>
+
+  <div class="tabbar-m">
+    <a
+      class="mbtn"
+      [attr.href]="menuHref()"
+      aria-controls="files"
+      [attr.aria-expanded]="shell.menuOpen()"
+      (click)="toggleMenu($event)"
+    >
+      @if (shell.menuOpen()) {
+        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+          <path d="M3 3l10 10M13 3L3 13" />
+        </svg>
+        <span i18n="@@frame.menu.close">Close</span>
+      } @else {
+        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+          <path d="M2 4h12M2 8h12M2 12h12" />
+        </svg>
+        <span i18n="@@frame.menu.open">Files</span>
+      }
+    </a>
+    <span class="t-meta">
+      @if (shell.menuOpen()) {
+        <ng-container i18n="@@frame.explorer">Explorer</ng-container>
+      } @else {
+        {{ page()?.file }}
+      }
+    </span>
+    <button type="button" class="mbtn" (click)="shell.finderOpen.set(true)">
+      <ng-container i18n="@@frame.search.phone">Search</ng-container>
+    </button>
+  </div>
+</header>

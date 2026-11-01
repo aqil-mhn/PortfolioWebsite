@@ -1,0 +1,32 @@
+<app-page-head path="stack.json">
+  <ng-container i18n="@@stack.comment"
+    >Every tool is linked to the project that shows it</ng-container
+  >
+</app-page-head>
+<h1 class="t-title mt5" i18n="@@stack.title">Stack</h1>
+<p class="t-lead mt4" i18n="@@stack.lead">The tools I use, each with the project that proves it.</p>
+
+<div class="grid3 mt6">
+  @for (group of groups; track group.id) {
+    <section class="card" [attr.aria-label]="group.label">
+      <p class="t-label">{{ group.label }}</p>
+      @for (tool of group.tools; track tool.name) {
+        <div class="row">
+          <span>{{ tool.name }}</span>
+          @if (tool.project.path; as path) {
+            <a class="lk" [routerLink]="path">{{ tool.project.label }}</a>
+          } @else if (tool.project.href; as url) {
+            <a class="lk" [href]="url" target="_blank" rel="noopener noreferrer"
+              >{{ tool.project.label
+              }}<span class="visually-hidden" i18n="@@link.newtab"> (opens in a new tab)</span></a
+            >
+          } @else {
+            <span class="c-mute">{{ tool.project.label }}</span>
+          }
+        </div>
+      }
+    </section>
+  }
+</div>
+
+<p class="t-meta mt5" i18n="@@stack.note">// Skills without a project are left out on purpose.</p>

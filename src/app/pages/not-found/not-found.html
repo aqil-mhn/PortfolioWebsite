@@ -1,0 +1,21 @@
+<app-page-head path="not-found.md">
+  <ng-container i18n="@@notfound.comment">Error 404</ng-container>
+</app-page-head>
+<h1 class="t-title mt5">404</h1>
+<p class="t-lead mt4" i18n="@@notfound.lead">That file does not exist, or it moved.</p>
+
+<div class="cols2 mt6">
+  <section class="card" aria-label="Where to go next" i18n-aria-label="@@notfound.next.label">
+    <p class="t-label" i18n="@@notfound.next.heading">try one of these</p>
+    <a class="row" routerLink="/"
+      ><span>home.md</span><span class="c-mute" i18n="@@notfound.home">Start again</span></a
+    >
+    <a class="row" routerLink="/projects/moneytracker"
+      ><span>projects/moneytracker.md</span
+      ><span class="c-mute" i18n="@@notfound.case">Case study</span></a
+    >
+    <a class="row" routerLink="/contact"
+      ><span>contact.md</span><span class="c-mute" i18n="@@notfound.contact">Say hello</span></a
+    >
+  </section>
+</div>

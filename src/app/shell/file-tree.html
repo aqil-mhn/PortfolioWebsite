@@ -1,0 +1,58 @@
+<nav class="tree" id="files" aria-label="Main" i18n-aria-label="@@frame.tree.label">
+  <p class="t-label" i18n="@@frame.explorer.heading">Explorer</p>
+  <ul>
+    <li>
+      <div class="f">
+        <span class="caret" aria-hidden="true">▾</span><b>{{ rootName }}</b>
+      </div>
+      <ul>
+        <li>
+          <a
+            class="f l2"
+            [routerLink]="home.path"
+            [attr.aria-current]="url() === '/' ? 'page' : null"
+            >{{ home.name }}</a
+          >
+        </li>
+        <li>
+          <button
+            type="button"
+            class="f l2"
+            aria-controls="tree-projects"
+            [attr.aria-expanded]="projectsOpen()"
+            (click)="projectsOpen.set(!projectsOpen())"
+          >
+            <span class="caret" aria-hidden="true">{{ projectsOpen() ? '▾' : '▸' }}</span
+            >{{ folderName }}
+          </button>
+          <ul id="tree-projects" [hidden]="!projectsOpen()">
+            @for (file of projects; track file.name) {
+              <li>
+                @if (file.path; as path) {
+                  <a
+                    class="f l3"
+                    [routerLink]="path"
+                    [attr.aria-current]="url() === path ? 'page' : null"
+                    >{{ file.name }}</a
+                  >
+                } @else {
+                  <span class="f l3 pending">{{ file.name }}</span>
+                }
+              </li>
+            }
+          </ul>
+        </li>
+        @for (file of files; track file.name) {
+          <li>
+            <a
+              class="f l2"
+              [routerLink]="file.path"
+              [attr.aria-current]="url() === file.path ? 'page' : null"
+              >{{ file.name }}</a
+            >
+          </li>
+        }
+      </ul>
+    </li>
+  </ul>
+</nav>

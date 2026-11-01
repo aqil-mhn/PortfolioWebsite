@@ -1,0 +1,111 @@
+<header class="case-head">
+  <app-page-head path="projects / moneytracker.md">
+    <ng-container i18n="@@case.comment">Case study · Angular · [year]</ng-container>
+  </app-page-head>
+  <h1 class="t-title mt5">MoneyTracker</h1>
+  <p class="t-lead mt4">
+    <ng-container i18n="@@case.lead"
+      >[A personal finance tracker.] I built it with
+      <a
+        routerLink="/stack"
+        aria-label="Angular on the stack page"
+        i18n-aria-label="@@case.link.angular"
+        >Angular</a
+      >
+      to [reason], and these are the decisions I would make again.</ng-container
+    >
+  </p>
+</header>
+
+<aside class="case-aside">
+  <div class="case-media">
+    <div
+      class="ph shot"
+      role="img"
+      aria-label="[Screenshot or demo video placeholder]"
+      i18n-aria-label="@@case.media.label"
+    >
+      <span aria-hidden="true" i18n="@@case.media.text">[Screenshot or demo video]</span>
+    </div>
+    <a class="btn mt4" [routerLink]="[]" fragment="demo" i18n="@@case.sandbox">Try the sandbox</a>
+    <a class="lk mt1" [routerLink]="[]" fragment="demo" i18n="@@case.video"
+      >Watch the demo video →</a
+    >
+  </div>
+
+  <div class="case-side">
+    <section class="card" aria-label="Stack used" i18n-aria-label="@@case.stack.label">
+      <p class="t-label" i18n="@@case.stack.heading">stack used</p>
+      <a class="row" routerLink="/stack"
+        ><span>Angular</span><span class="c-mute" aria-hidden="true">↗</span></a
+      >
+      <a class="row" routerLink="/stack"
+        ><span>TypeScript</span><span class="c-mute" aria-hidden="true">↗</span></a
+      >
+      <a class="row" routerLink="/stack"
+        ><span i18n="@@case.stack.more">[More]</span
+        ><span class="c-mute" aria-hidden="true">↗</span></a
+      >
+    </section>
+    <div class="row mt4">
+      <span class="t-meta" i18n="@@case.next">Next project</span>
+      <span class="c-mute">[project-2].md</span>
+    </div>
+    <a class="lk" routerLink="/contact" i18n="@@case.contact">Like this? Say hello →</a>
+  </div>
+</aside>
+
+<div class="case-body">
+  <section>
+    <h2 class="t-h2">
+      <i>## </i><ng-container i18n="@@case.problem.heading">The problem</ng-container>
+    </h2>
+    <p class="t-body mt2" i18n="@@case.problem.text">
+      [Two sentences on the problem and who it is for.]
+    </p>
+  </section>
+
+  <section class="mt6">
+    <h2 class="t-h2">
+      <i>## </i><ng-container i18n="@@case.decisions.heading">Decisions</ng-container>
+    </h2>
+    <ol>
+      <li class="dec mt2">
+        <b class="t-body">01</b>
+        <p class="t-body">
+          <ng-container i18n="@@case.decision1">[Decision one, in one line.]</ng-container><br />
+          <span class="c-mute" i18n="@@case.decision1.why">why: [the reason, in one line]</span>
+        </p>
+      </li>
+      <li class="dec mt3">
+        <b class="t-body">02</b>
+        <p class="t-body">
+          <ng-container i18n="@@case.decision2">[Decision two, in one line.]</ng-container><br />
+          <span class="c-mute" i18n="@@case.decision2.why">why: [the reason, in one line]</span>
+        </p>
+      </li>
+      <li class="dec mt3">
+        <b class="t-body">03</b>
+        <p class="t-body">
+          <ng-container i18n="@@case.decision3">[Decision three, in one line.]</ng-container><br />
+          <span class="c-mute" i18n="@@case.decision3.why">why: [the reason, in one line]</span>
+        </p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="demo" class="mt6">
+    <h2 class="t-h2"><i>## </i><ng-container i18n="@@case.demo.heading">Demo</ng-container></h2>
+    <p class="t-body mt2" i18n="@@case.demo.text">
+      [The read-only sandbox and the demo video go here. The sandbox runs in the browser on sample
+      data.]
+    </p>
+  </section>
+
+  <section class="mt6">
+    <h2 class="t-h2">
+      <i>## </i><ng-container i18n="@@case.change.heading">What I would change</ng-container>
+    </h2>
+    <p class="t-body mt2" i18n="@@case.change.text">[One honest paragraph on what comes next.]</p>
+  </section>
+</div>

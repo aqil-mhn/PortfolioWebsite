@@ -1,0 +1,33 @@
+/* JetBrains Mono is the only font. Files are subset by `npm run fonts`. */
+
+/*
+  While the font loads, text sets in a local monospace face whose advance width matches
+  JetBrains Mono (0.6em), so swapping in the real font does not move anything.
+*/
+@font-face {
+  font-family: 'JetBrains Mono Fallback';
+  src: local('Courier New'), local('Liberation Mono'), local('Menlo'), local('DejaVu Sans Mono');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-500.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-700.woff2') format('woff2');
+}

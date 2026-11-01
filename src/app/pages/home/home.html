@@ -1,0 +1,88 @@
+<app-page-head path="home.md">
+  <ng-container i18n="@@home.comment"
+    >Full Stack Developer · [City], Malaysia · open from [date]</ng-container
+  >
+</app-page-head>
+
+<h1 class="t-display mt5">
+  <ng-container i18n="@@home.sentence"
+    >I’m Nik, a full stack developer in [City]. I build with
+    <a routerLink="/stack" aria-label="Angular projects" i18n-aria-label="@@home.link.angular"
+      >Angular</a
+    >
+    and
+    <a
+      routerLink="/stack"
+      aria-label="Spring Boot projects"
+      i18n-aria-label="@@home.link.springboot"
+      >Spring Boot</a
+    >, read the
+    <a
+      routerLink="/projects/moneytracker"
+      aria-label="The data work in the MoneyTracker case study"
+      i18n-aria-label="@@home.link.data"
+      >data</a
+    >
+    behind them, and made
+    <a
+      routerLink="/projects/moneytracker"
+      aria-label="MoneyTracker case study"
+      i18n-aria-label="@@home.link.moneytracker"
+      >MoneyTracker</a
+    >
+    to show how I work. Kind people have left
+    <a
+      routerLink="/referrals"
+      aria-label="A few words from people I have worked with"
+      i18n-aria-label="@@home.link.referrals"
+      >a few words</a
+    >, or you can
+    <a
+      routerLink="/contact"
+      aria-label="Say hello on the contact page"
+      i18n-aria-label="@@home.link.contact"
+      >say hello</a
+    >.</ng-container
+  ><span class="cursor" aria-hidden="true"></span>
+</h1>
+
+<div class="grid3 mt6">
+  <section class="card" aria-label="Stack" i18n-aria-label="@@home.card.stack.label">
+    <p class="t-label">stack.json</p>
+    <p class="code">{{ '{' }}</p>
+    <p class="code in">
+      <span class="c-acc">"frontend"</span>: <span class="c-amb">"Angular"</span>,
+    </p>
+    <p class="code in">
+      <span class="c-acc">"backend"</span>: <span class="c-amb">"Spring Boot"</span>,
+    </p>
+    <p class="code in">
+      <span class="c-acc">"open_from"</span>: <span class="c-amb">"[date]"</span>
+    </p>
+    <p class="code">{{ '}' }}</p>
+    <div class="push"></div>
+    <a class="lk" routerLink="/stack" i18n="@@home.card.stack.link">See the full stack →</a>
+  </section>
+
+  <section class="card" aria-label="Featured project" i18n-aria-label="@@home.card.project.label">
+    <p class="t-label">projects/moneytracker.md</p>
+    <h2 class="t-card">MoneyTracker</h2>
+    <p class="t-body c-mute mt2" i18n="@@home.card.project.summary">
+      [One line on what it does and what I learned building it.]
+    </p>
+    <div class="push"></div>
+    <a class="lk" routerLink="/projects/moneytracker" i18n="@@home.card.project.link"
+      >Read the case study →</a
+    >
+  </section>
+
+  <section class="card" aria-label="Referral" i18n-aria-label="@@home.card.referral.label">
+    <p class="t-label">referrals.md</p>
+    <p class="t-body" i18n="@@home.card.referral.quote">
+      “[Quote from a referral, used with permission.]”
+    </p>
+    <p class="t-meta mt2" i18n="@@home.card.referral.by">[Name], [Role], [Organisation]</p>
+    <div class="push"></div>
+    <a class="lk" routerLink="/referrals" i18n="@@home.card.referral.link">All referrals →</a>
+  </section>
+</div>

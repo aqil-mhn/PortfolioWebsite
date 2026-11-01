@@ -1,0 +1,16 @@
+<a class="skip" [attr.href]="skipHref()" (click)="skip($event)" i18n="@@frame.skip">
+  Skip to content
+</a>
+
+<div class="shell" [attr.data-menu]="shell.menuOpen() ? 'open' : null">
+  <app-tab-bar />
+  <div class="body">
+    <app-file-tree />
+    <main id="content" class="main" tabindex="-1">
+      <router-outlet />
+    </main>
+  </div>
+  <app-status-bar />
+</div>
+
+<app-finder />

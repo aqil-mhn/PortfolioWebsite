@@ -1,0 +1,219 @@
+/* Reset, type scale and spacing helpers. Every value comes from tokens.css. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--bar-h) + var(--s4));
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: var(--body-size);
+  line-height: var(--body-line);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+dl,
+dd {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* type scale */
+.t-display {
+  font-size: var(--display-size);
+  line-height: var(--display-line);
+  font-weight: 500;
+  letter-spacing: var(--ls-display);
+}
+
+.t-title {
+  font-size: var(--title-size);
+  line-height: var(--title-line);
+  font-weight: 700;
+  letter-spacing: var(--ls-title);
+  overflow-wrap: anywhere;
+}
+
+.t-card {
+  font-size: var(--card-size);
+  line-height: var(--card-line);
+  font-weight: 700;
+  letter-spacing: var(--ls-card);
+}
+
+.t-lead {
+  max-width: var(--measure);
+  font-size: var(--lead-size);
+  line-height: var(--lead-line);
+  font-weight: 400;
+  letter-spacing: var(--ls-lead);
+}
+
+.t-h2 {
+  font-size: var(--h2-size);
+  line-height: var(--h2-line);
+  font-weight: 700;
+}
+
+.t-h2 i {
+  font-style: normal;
+  color: var(--amb);
+}
+
+.t-body {
+  max-width: var(--measure);
+  font-size: var(--body-size);
+  line-height: var(--body-line);
+  font-weight: 400;
+}
+
+.t-ui {
+  font-size: var(--ui-size);
+  line-height: var(--ui-line);
+  font-weight: 500;
+}
+
+.t-meta {
+  font-size: var(--meta-size);
+  line-height: var(--meta-line);
+  font-weight: 400;
+  color: var(--mute);
+}
+
+.t-label {
+  font-size: var(--label-size);
+  line-height: var(--label-line);
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.t-display a {
+  color: var(--acc);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: var(--link-w);
+  text-underline-offset: var(--link-off);
+}
+
+.t-lead a {
+  color: var(--acc);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: var(--link-w-s);
+  text-underline-offset: var(--link-off-s);
+}
+
+.c-mute {
+  color: var(--mute);
+}
+
+.c-acc {
+  color: var(--acc);
+}
+
+.c-amb {
+  color: var(--amb);
+}
+
+/* spacing helpers: margin-top from the scale only */
+.mt1 {
+  margin-top: var(--s1);
+}
+.mt2 {
+  margin-top: var(--s2);
+}
+.mt3 {
+  margin-top: var(--s3);
+}
+.mt4 {
+  margin-top: var(--s4);
+}
+.mt5 {
+  margin-top: var(--s5);
+}
+.mt6 {
+  margin-top: var(--s6);
+}
+.mt7 {
+  margin-top: var(--s7);
+}
+
+.push {
+  flex: 1 1 auto;
+  min-height: var(--s3);
+}
+
+/* focus: a blue ring in every theme */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+main:focus-visible {
+  outline: var(--ring) solid var(--focus);
+  outline-offset: var(--ring);
+  border-radius: var(--r-s);
+}
+
+main:focus-visible {
+  outline-offset: calc(-1 * var(--ring));
+}
+
+.tab:focus-visible,
+.f:focus-visible,
+.sb a:focus-visible,
+.sb button:focus-visible {
+  outline-offset: calc(-1 * var(--ring));
+}
+
+.sb a:focus-visible,
+.sb button:focus-visible {
+  outline-color: var(--onacc);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

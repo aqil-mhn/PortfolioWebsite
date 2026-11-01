@@ -1,0 +1,373 @@
+/* The editor frame: tab bar, file tree, page, status bar. Identical on every page. */
+.skip {
+  position: fixed;
+  top: var(--s2);
+  left: var(--s2);
+  z-index: 10;
+  padding: var(--s3) var(--s4);
+  background: var(--acc);
+  color: var(--onacc);
+  border-radius: var(--r-s);
+  font-size: var(--ui-size);
+  line-height: var(--ui-line);
+  font-weight: 700;
+  transform: translateY(calc(-100% - var(--s4)));
+}
+
+.skip:focus-visible {
+  transform: none;
+  outline-color: var(--onacc);
+}
+
+/* Frame components add no box of their own; their children are the grid items. */
+app-tab-bar,
+app-file-tree,
+app-status-bar,
+app-finder {
+  display: contents;
+}
+
+.shell {
+  display: grid;
+  grid-template-rows: var(--bar-h) minmax(0, 1fr) var(--bar-h);
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* tab bar */
+.tabbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--bar);
+  border-bottom: var(--stroke) solid var(--line);
+}
+
+.tabbar-d,
+.tabbar-m {
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.tabbar-d {
+  display: flex;
+}
+
+.tabbar-m {
+  display: none;
+}
+
+.tabs {
+  display: flex;
+  min-width: 0;
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--bar-h);
+  padding: 0 var(--s5);
+  font-size: var(--meta-size);
+  line-height: var(--meta-line);
+  color: var(--mute);
+  border-right: var(--stroke) solid var(--line);
+}
+
+.tab:hover {
+  color: var(--text);
+}
+
+.tab[aria-current='page'] {
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: inset 0 var(--mark-tab) 0 var(--acc);
+}
+
+.search {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s3);
+  min-height: var(--tap);
+  margin-right: var(--s2);
+  padding: 0 var(--s4);
+  background: var(--bg);
+  color: var(--mute);
+  border: var(--stroke) solid var(--line);
+  border-radius: var(--r-s);
+  font-size: var(--meta-size);
+  line-height: var(--meta-line);
+  cursor: pointer;
+}
+
+.search b {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.mbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  min-height: var(--tap);
+  padding: 0 var(--s4);
+  background: transparent;
+  border: 0;
+  color: var(--text);
+  font-size: var(--ui-size);
+  line-height: var(--ui-line);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.mbtn svg {
+  width: var(--s4);
+  height: var(--s4);
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--mark-tab);
+  stroke-linecap: round;
+}
+
+/* body: file tree and page */
+.body {
+  display: grid;
+  grid-template-columns: var(--side-w) minmax(0, 1fr);
+  min-height: 0;
+}
+
+.tree {
+  position: sticky;
+  top: var(--bar-h);
+  align-self: start;
+  height: calc(100dvh - 2 * var(--bar-h));
+  overflow-y: auto;
+  padding: var(--s4) 0;
+  background: var(--panel);
+  border-right: var(--stroke) solid var(--line);
+}
+
+.tree .t-label {
+  padding: 0 var(--s5);
+  margin-bottom: var(--s2);
+}
+
+.f {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  width: 100%;
+  min-height: var(--file-h);
+  padding: 0 var(--s3) 0 var(--s5);
+  background: transparent;
+  border: 0;
+  font-size: var(--ui-size);
+  line-height: var(--ui-line);
+  text-align: left;
+  color: var(--text);
+}
+
+.f.l2 {
+  padding-left: calc(var(--s5) * 2);
+}
+
+.f.l3 {
+  padding-left: calc(var(--s5) * 3);
+}
+
+button.f {
+  cursor: pointer;
+}
+
+a.f:hover,
+button.f:hover {
+  background: var(--sel);
+}
+
+.f[aria-current='page'] {
+  background: var(--sel);
+  box-shadow: inset var(--mark-file) 0 0 var(--acc);
+  font-weight: 500;
+}
+
+.f .caret {
+  color: var(--mute);
+}
+
+.f.pending {
+  color: var(--mute);
+}
+
+.main {
+  min-width: 0;
+  padding: var(--py) var(--px);
+}
+
+.main > * {
+  display: block;
+  max-width: var(--content-w);
+}
+
+/* status bar */
+.sb {
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s4);
+  padding: 0 var(--s3) 0 var(--s5);
+  background: var(--acc);
+  color: var(--onacc);
+  font-size: var(--meta-size);
+  line-height: var(--meta-line);
+}
+
+.sbr {
+  display: flex;
+  align-items: center;
+  gap: var(--s4);
+}
+
+.langs {
+  display: flex;
+}
+
+.lg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--tap);
+  min-height: var(--tap);
+  font-weight: 500;
+}
+
+.lg[aria-current='true'] {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: var(--s1);
+}
+
+.tg {
+  display: inline-flex;
+  gap: var(--s1);
+}
+
+.tg button {
+  min-height: var(--tap);
+  padding: 0 var(--s3);
+  border: var(--stroke-bold) solid var(--onacc);
+  border-radius: var(--r-s);
+  background: transparent;
+  color: var(--onacc);
+  font-size: var(--label-size);
+  line-height: var(--label-line);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* The active toggle needs no script: it follows data-theme, then the system */
+:root[data-theme='light'] .tg .bl,
+:root[data-theme='dark'] .tg .bd {
+  background: var(--onacc);
+  color: var(--acc);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) .tg .bl {
+    background: var(--onacc);
+    color: var(--acc);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .tg .bd {
+    background: var(--onacc);
+    color: var(--acc);
+  }
+}
+
+/* finder */
+.finder {
+  width: min(100% - 2 * var(--s4), var(--finder-w));
+  margin-top: var(--s8);
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  border: var(--stroke) solid var(--line);
+  border-radius: var(--r);
+}
+
+.finder::backdrop {
+  background: color-mix(in srgb, var(--bar) 70%, transparent);
+}
+
+.finder form {
+  padding: var(--s4);
+}
+
+.finder-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+}
+
+.finder-bar .input {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.finder ul {
+  margin-top: var(--s3);
+  max-height: 50dvh;
+  overflow-y: auto;
+}
+
+.finder .row {
+  padding: 0 var(--s3);
+  border-radius: var(--r-s);
+}
+
+.finder .row:hover {
+  background: var(--sel);
+}
+
+/* phone: below 768px */
+@media (max-width: 767px) {
+  .tabbar-d,
+  .sb-info {
+    display: none;
+  }
+
+  .tabbar-m {
+    display: flex;
+  }
+
+  .body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tree {
+    display: none;
+    position: static;
+    height: auto;
+    border-right: 0;
+  }
+
+  .shell[data-menu='open'] .tree,
+  .tree:target {
+    display: block;
+    min-height: calc(100dvh - 2 * var(--bar-h));
+  }
+
+  .shell[data-menu='open'] .main,
+  .body:has(.tree:target) .main {
+    display: none;
+  }
+
+  .sb {
+    padding: 0 var(--s2);
+  }
+}
