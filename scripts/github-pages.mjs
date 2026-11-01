@@ -7,7 +7,7 @@
 // The base path is last and optional: a site at the domain root (a repository named
 // <owner>.github.io) has none.
 //
-//   node scripts/github-pages.mjs rebase <origin> [base path, e.g. /Portfolio]
+//   node scripts/github-pages.mjs rebase <origin> [base path, e.g. /PortfolioWebsite]
 //   node scripts/github-pages.mjs verify [base path]
 import { readFile, readdir, writeFile } from 'node:fs/promises';
 

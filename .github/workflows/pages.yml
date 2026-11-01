@@ -1,0 +1,82 @@
+# Temporary: publishes the site to GitHub Pages while it is in development. Delete this file,
+# scripts/github-pages.mjs and the README section when the site moves to Cloudflare Pages.
+# One-time setup: Settings > Pages > Build and deployment > Source: GitHub Actions.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deployment finish; only the newest waiting run replaces older waiting ones.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check formatting
+        run: npm run format:check
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test
+        run: npm test
+
+      # Fails here, with a pointer to the setting, until the Pages source is GitHub Actions.
+      - name: Read the Pages address
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Point root links at the repository path
+        env:
+          ORIGIN: ${{ steps.pages.outputs.origin }}
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
+        run: node scripts/github-pages.mjs rebase "$ORIGIN" "$BASE_PATH"
+
+      - name: Build all languages
+        env:
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
+        run: |
+          npx ng build --base-href "$BASE_PATH/"
+          node scripts/finalize-build.mjs
+
+      - name: Verify links and base tags
+        env:
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
+        run: node scripts/github-pages.mjs verify "$BASE_PATH"
+
+      - name: Upload the site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/portfolio/browser
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
