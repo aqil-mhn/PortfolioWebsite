@@ -70,7 +70,7 @@ Review status lives in each file's `review.status` (`draft`, `not-reviewed` or `
 
 While the site is in development, `.github/workflows/pages.yml` publishes it to GitHub Pages on every push to `main`, and on demand from the Actions tab (**Run workflow**). It is meant to be thrown away when the site moves to Cloudflare Pages.
 
-One-time setup, in the repository on GitHub: **Settings > Pages > Build and deployment > Source: GitHub Actions**. Until that is set, the workflow stops at its "Read the Pages address" step and says so. The site then lives at `https://<owner>.github.io/<repository>/`, with Malay at `/ms/` and Kelantan at `/kel/`.
+One-time setup, in the repository on GitHub: **Settings > Pages > Build and deployment > Source: GitHub Actions**. Until that is set, the workflow stops at its "Read the Pages address" step and says so. The site then lives at `https://<owner>.github.io/<repository>/`, which for this repository is `https://aqil-mhn.github.io/PortfolioWebsite/`, with Malay at `/ms/` and Kelantan at `/kel/`.
 
 The workflow:
 
@@ -88,9 +88,9 @@ Good to know:
 - To try the build by hand, use a throwaway clone, because `rebase` edits the sources:
 
 ```bash
-node scripts/github-pages.mjs rebase https://example.github.io /Portfolio
-npx ng build --base-href /Portfolio/ && node scripts/finalize-build.mjs
-node scripts/github-pages.mjs verify /Portfolio
+node scripts/github-pages.mjs rebase https://example.github.io /PortfolioWebsite
+npx ng build --base-href /PortfolioWebsite/ && node scripts/finalize-build.mjs
+node scripts/github-pages.mjs verify /PortfolioWebsite
 ```
 
 To remove it, delete `.github/workflows/pages.yml`, `scripts/github-pages.mjs` and this section, and turn Pages off in the repository settings. Nothing in `src/` or `angular.json` knows about GitHub Pages.
