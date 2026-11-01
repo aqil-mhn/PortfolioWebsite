@@ -33,7 +33,7 @@
       <span class="t-meta" i18n="@@about.period3">[Year] – [Year]</span>
       <p class="t-body">
         <b i18n="@@about.qualification">[Qualification]</b><br />
-        <span class="c-mute" i18n="@@about.institution">[Intituation, City]</span>
+        <span class="c-mute" i18n="@@about.institution">[Institution], [City]</span>
       </p>
     </div>
     <p class="t-meta mt3" i18n="@@about.fulllist">
@@ -58,9 +58,9 @@
     @if (email; as address) {
       <a class="lk" [href]="'mailto:' + address">{{ address }}</a>
     } @else {
-      <a class="lk" routerLink="/contact" i18n="@@about.where.contact">nikaqilrazaki@gmail.com</a>
+      <a class="lk" routerLink="/contact" i18n="@@about.where.contact">[email]&#64;nikaqil.com</a>
     }
-    <p class="t-meta mt1" i18n="@@about.where.based">Based in Ampang, Malaysia</p>
+    <p class="t-meta mt1" i18n="@@about.where.based">Based in [City], Malaysia</p>
     <p class="t-meta" i18n="@@about.where.open">Open from [date]</p>
   </section>
 </aside>
